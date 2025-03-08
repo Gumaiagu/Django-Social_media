@@ -32,6 +32,20 @@ There is a system of banning and deleting posts that I made, it's really simple,
 
 Unlike my chat site, we don't need to go to the admin page to delete posts or ban users, we can do it in the user about page and in the posts page.
 
+To give to other users staff status, we need to have access to the admin page, so, create a super user with:
+
+#### Unix/Mac OS
+
+```
+python3 manage.py createsuperuser
+```
+
+#### Windows
+
+```
+py manage.py createsuperuser
+```
+
 ## Posts system
 
 In this program, the aim was to create a social media like Instagram or X (an app with users and posts), so the main thing of the site is the posts.
