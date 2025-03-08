@@ -1,0 +1,41 @@
+{% extends "layout/index.html" %}
+
+{% block title %}
+    Create posts
+{% endblock %}
+
+{% block static %}
+    <style>
+        textarea {
+            border: 1px solid white;
+            border-radius: 10px;
+
+            resize: none;
+
+            width: 80%;
+            height: 250px;
+        }
+    </style>
+{% endblock %}
+
+{% block header %}
+    <a href="{% url 'posts:home' %}">home</a>
+{% endblock %}
+
+{% block inCodeTitle %}
+    <h1>Create posts</h1>
+{% endblock %}
+
+{% block content %}
+    <form enctype="multipart/form-data" action="new_post" method="post" novalidate="">
+        {% csrf_token %}
+        <label for="title">Title</label>
+        <input required name="title" type="text"><br>
+
+        <textarea name="description"></textarea><br>
+
+        <input type="file" name="persons_file" accept="image/*"><br>
+
+        <button type="submit">Send</button>
+    </form>
+{% endblock %}

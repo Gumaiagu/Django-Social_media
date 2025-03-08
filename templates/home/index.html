@@ -1,0 +1,18 @@
+{% extends "layout/index.html" %}
+
+{% block title %}
+    Home
+{% endblock %}
+
+{% block header %}
+    <a class="other-places" href="{% url 'login' %}">Login</a>
+    <a class="other-places" href="{% url 'singup' %}">Singup</a>
+{% endblock %}
+
+{% block inCodeTitle %}
+    <h1>Social media</h1>
+{% endblock %}
+
+{% block content %}
+    <p>This is my social media.</p>
+{% endblock %}

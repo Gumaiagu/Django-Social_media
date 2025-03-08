@@ -1,0 +1,22 @@
+{% extends "layout/index.html" %}
+
+{% block title %}
+    Posts
+{% endblock %}
+
+{% block header %}
+    <a class="other-places" href="/users/{{ user }}">{{ user }}</a>
+    <a class="other-places" href="{% url 'posts:add_posts' %}" rel="noopener noreferrer">Create a post</a>
+{% endblock %}
+
+{% block inCodeTitle %}
+    <h1>Posts</h1>
+{% endblock %}
+
+{% block content %}
+    <script src="https://unpkg.com/htmx.org@2.0.4" integrity="sha384-HGfztofotfshcF7+8n44JQL2oJmowVChPTg48S+jvZoztPfvwD79OC/LTtG6dMp+" crossorigin="anonymous"></script>
+
+    <div id="all-posts">
+        {% include 'posts/new_posts.html' with posts=posts %}
+    </div>
+{% endblock %}  

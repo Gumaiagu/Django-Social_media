@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>{% block title %}Social media{% endblock %}</title>
+        <link href='https://fonts.googleapis.com/css?family=Comfortaa' rel='stylesheet'>
+        <style>
+            body {
+                background-color: black;
+                color: white;
+                font-family: 'Comfortaa';
+                font-size: 20px;
+            }
+
+            header {
+                display: block;
+                position: fixed;
+                width: 100%;
+                top: 0;
+                right: 0;
+                padding: 5px 0;
+
+                background-color: rgb(19, 19, 19);
+                border-bottom: 1px solid rgb(255, 255, 255);
+
+                text-align: right;
+            }
+
+            a {
+                color: white;
+                font-size: 20px;
+            }
+
+            a:hover {
+                color: rgb(161, 161, 161);
+            }
+
+            .other-places {
+                color: white;
+                font-size: 25px;
+                margin-left: 20px;
+            }
+
+            #title {
+                margin-top: 50px;
+                margin-bottom: -15px;
+            }
+
+            label {
+                font-size: 25px;
+            }
+
+            input {
+                border: 1px solid rgb(85, 85, 85);
+                border-radius: 10px;
+                padding: 5px 10px;
+                margin: 10px 0;
+            }
+
+            button {
+                background-color: white;
+
+                border: 1px solid rgb(121, 121, 121);
+                border-radius: 10px;
+
+                margin-top: 10px;
+                padding: 3px 10px;
+
+                font-family: 'Comfortaa';
+                font-size: 20px;
+            }
+
+            button:hover {
+                cursor: pointer;
+                background-color: rgb(161, 161, 161);
+            }
+        </style>
+        {% block static %}{% endblock %}
+    </head>
+    <body>
+        <header>
+            {% block header %}
+                <a class="other-places" href="{% url 'home' %}">Home</a>
+            {% endblock %}
+        </header>
+
+        <div id="title">
+            {% block inCodeTitle %}
+                <h1>Social media</h1>
+            {% endblock %}
+        </div>
+
+        <div id="content">
+            {% block content %}
+                <p>This is my social media.</p>
+            {% endblock %}
+        </div>
+    </body>
+</html>

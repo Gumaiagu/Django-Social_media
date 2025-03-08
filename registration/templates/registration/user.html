@@ -1,0 +1,38 @@
+{% extends "layout/index.html" %}
+
+{% block title %}
+    {{ who.username }}
+{% endblock %}
+
+{% block header %}
+    <a class="other-places" href="{% url 'posts:home' %}">home</a>
+{% endblock %}
+
+{% block inCodeTitle %}
+    <h1>{{ who.username }}</h1>
+{% endblock %}
+
+{% block content %}
+    <p>Last join: {{ who.last_login }}</p>
+
+    {% if user.is_staff and user != who %}
+        <script src="https://unpkg.com/htmx.org@2.0.4" integrity="sha384-HGfztofotfshcF7+8n44JQL2oJmowVChPTg48S+jvZoztPfvwD79OC/LTtG6dMp+" crossorigin="anonymous"></script>
+        <div id="ban-button" hx-headers='{"X-CSRFToken": "{{ csrf_token }}"}'>
+            {% if is_banned %}
+                <button
+                    hx-post="/unban_user/{{ who.id }}"
+                    hx-target="#ban-button"
+                    id="block">
+                    UnBan user
+                </button>
+            {% else %}
+                <button
+                    hx-post="/ban_user/{{ who.id }}"
+                    hx-target="#ban-button"
+                    id="block">
+                    Ban user
+                </button>
+            {% endif %}
+        </div>
+    {% endif %}
+{% endblock %}

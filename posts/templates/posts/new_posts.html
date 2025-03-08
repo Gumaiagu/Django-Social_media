@@ -1,0 +1,58 @@
+{% for post in posts %}
+    {% if forloop.last %}
+        <div 
+            hx-trigger="revealed"
+            hx-get="posts/{{ post.id }}"
+            hx-target="#all-posts"
+            hx-swap="afterend"
+            id="{{ post.id }}">
+    {% else %}
+        <div id="{{ post.id }}">
+    {% endif %}
+            <hr>
+            <h4>{{ post.title }}</h4>
+            <p>Send by <b><a href="/users/{{ post.user }}" target="_blank" rel="noopener noreferrer">{{ post.user }}</a></b></p>
+            <p>{{ post.text }}</p>
+
+            {% if post.image %}
+                <img height="100px" src="{{ post.image.url }}" alt="Image description">
+            {% endif %}
+
+            <div hx-headers='{"X-CSRFToken": "{{ csrf_token }}"}'>
+                <span id="dislikes-{{ post.id }}">{{ post.dislikes }}</span>
+                
+                <button
+                    hx-post="/posts/{{ post.id }}/dislikes"
+                    hx-target="#dislikes-{{ post.id }}">
+                    Dislike
+                </button>
+            </div>
+
+            <div hx-headers='{"X-CSRFToken": "{{ csrf_token }}"}'>
+                <span id="likes-{{ post.id }}">{{ post.likes }}</span>
+
+                <button
+                    hx-post="/posts/{{ post.id }}/likes"
+                    hx-target="#likes-{{ post.id }}">
+                    Like
+                </button>
+            </div>
+
+            {% if user.is_staff %}
+                <div hx-headers='{"X-CSRFToken": "{{ csrf_token }}"}'>
+                    <style>
+                        #delete {
+                            color: rgb(212, 0, 0);
+                            margin-top: 30px;
+                        }
+                    </style>
+                    <button
+                        hx-post="/posts/{{ post.id }}/delete"
+                        hx-on:click='document.getElementById("{{ post.id }}").remove()'
+                        id="delete">
+                        Delete post
+                    </button>
+                </div>
+            {% endif %}
+        </div>
+{% endfor %}

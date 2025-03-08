@@ -1,0 +1,17 @@
+{% extends "layout/index.html" %}
+
+{% block title %}
+    You're banned!
+{% endblock %}
+
+{% block header %}
+    <a href="{% url 'posts:home' %}">home</a>
+{% endblock %}
+
+{% block inCodeTitle %}
+    <h1>You are banned!</h1>
+{% endblock %}
+
+{% block content %}
+    <p>You cannot create a post while banned</p>
+{% endblock %}
