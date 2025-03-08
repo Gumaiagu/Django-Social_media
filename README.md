@@ -64,7 +64,7 @@ There are 3 fixed statuses:
 
 > We can give more than one like/dislike to a post.
 
->In the Posts page, I used an infinite scroll technique, like in 
+>In the Posts page, I used an infinite scroll technique, like in a real social media
 
 As mentioned in the "User system" topic, there is a delete button, if the user has staff status, it will completely delete the post FOREVER, including the image (in an old version not published on Github, when a post was deleted, the image was not gone with the post).
 
